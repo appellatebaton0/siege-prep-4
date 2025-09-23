@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cabi2tsjjcc6r"]
+
+[ext_resource type="Script" uid="uid://daudjs4sbstgs" path="res://scripts/components/cp_lose.gd" id="1_6u6dy"]
+
+[node name="CP_Lose" type="Node"]
+script = ExtResource("1_6u6dy")

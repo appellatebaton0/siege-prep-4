@@ -1,0 +1,40 @@
+[gd_scene load_steps=8 format=3 uid="uid://chm3si0nicqxd"]
+
+[ext_resource type="Script" uid="uid://dwh0yifrqxhcp" path="res://scripts/actor.gd" id="3_pm3ni"]
+[ext_resource type="Script" uid="uid://cjjqx5jo072kl" path="res://scripts/dynamic_values/dv_component.gd" id="3_sugp2"]
+[ext_resource type="Script" uid="uid://ds82ovpm2ilwi" path="res://scripts/dynamic_values/dv_property.gd" id="4_tefeu"]
+[ext_resource type="Script" uid="uid://evy7o4o3vm6m" path="res://scripts/components/cp_animatedsprite.gd" id="5_tbgi4"]
+[ext_resource type="Texture2D" uid="uid://be6qno7g6ct2" path="res://icon.svg" id="6_o6xl0"]
+[ext_resource type="Script" uid="uid://euj3kp8pipih" path="res://scripts/particle_manager.gd" id="29_fv21b"]
+[ext_resource type="Script" uid="uid://cv207a4o6oygf" path="res://scripts/sfx_manager.gd" id="29_yq6so"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2(-7, 0)
+zoom = Vector2(3.4, 3.4)
+
+[node name="ParticleManager" type="Node" parent="."]
+script = ExtResource("29_fv21b")
+
+[node name="SFXManager" type="Node" parent="."]
+script = ExtResource("29_yq6so")
+
+[node name="PropertyDynamicValue" type="Node" parent="."]
+script = ExtResource("4_tefeu")
+property = "actor.static_texture"
+metadata/_custom_type_script = "uid://ds82ovpm2ilwi"
+
+[node name="NodeDynamicValue" type="Node" parent="PropertyDynamicValue" node_paths=PackedStringArray("node")]
+script = ExtResource("3_sugp2")
+component_id = "AnimatedSprite"
+node = NodePath("../../Actor")
+metadata/_custom_type_script = "uid://cjjqx5jo072kl"
+
+[node name="Actor" type="Node2D" parent="."]
+script = ExtResource("3_pm3ni")
+static_texture = ExtResource("6_o6xl0")
+metadata/_custom_type_script = "uid://dwh0yifrqxhcp"
+
+[node name="AnimatedSpriteComponent" type="AnimatedSprite2D" parent="Actor"]
+script = ExtResource("5_tbgi4")

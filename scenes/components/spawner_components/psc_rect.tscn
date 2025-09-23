@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://drd534ts08wqw"]
+
+[ext_resource type="Script" uid="uid://chbmrmtuoajba" path="res://scripts/components/spawner_components/position/psc_rect.gd" id="1_pgkyf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_85g3d"]
+size = Vector2(14.5525, 203)
+
+[node name="PSC_Rect" type="CollisionShape2D"]
+shape = SubResource("RectangleShape2D_85g3d")
+debug_color = Color(0.7, 0.548333, 0, 0.419608)
+script = ExtResource("1_pgkyf")

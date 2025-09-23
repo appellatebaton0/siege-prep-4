@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://71itai6j6ox1"]
+
+[ext_resource type="Script" uid="uid://udn3rvcqtocv" path="res://scripts/elements/em_texturerect.gd" id="1_657xx"]
+
+[sub_resource type="Gradient" id="Gradient_choun"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ya4ey"]
+gradient = SubResource("Gradient_choun")
+
+[node name="EM_TextureRect" type="TextureRect" node_paths=PackedStringArray("source")]
+texture_filter = 1
+size_flags_vertical = 3
+texture = SubResource("GradientTexture2D_ya4ey")
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("1_657xx")
+source = NodePath("")
+value = "holding.static_texture"

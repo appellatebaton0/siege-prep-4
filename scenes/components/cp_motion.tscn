@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://byojuvig761hd"]
+
+[ext_resource type="Script" uid="uid://ckj1cvv13i71a" path="res://scripts/components/cp_motion.gd" id="1_cgbwv"]
+
+[node name="CP_Motion" type="CharacterBody2D"]
+script = ExtResource("1_cgbwv")

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ceqfdea4uf607"]
+
+[ext_resource type="Script" uid="uid://cj261vub3j3pp" path="res://scripts/components/cp_pivot_look.gd" id="1_46hpx"]
+
+[node name="CP_PivotLook" type="Node2D"]
+script = ExtResource("1_46hpx")

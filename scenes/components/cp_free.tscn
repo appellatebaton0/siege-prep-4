@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5lgrvfkkeake"]
+
+[ext_resource type="Script" uid="uid://d25af0viaxcrw" path="res://scripts/components/cp_free.gd" id="1_b3nlc"]
+
+[node name="CP_Free" type="Node"]
+script = ExtResource("1_b3nlc")

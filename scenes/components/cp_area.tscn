@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7m0l4xy8303h"]
+
+[ext_resource type="Script" uid="uid://cvj4f83di1xdn" path="res://scripts/components/cp_area.gd" id="1_gagb4"]
+
+[node name="CP_Area" type="Area2D"]
+script = ExtResource("1_gagb4")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="input_event" from="." to="." method="_on_input_event"]

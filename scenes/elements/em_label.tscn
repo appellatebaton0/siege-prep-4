@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dnu1mqkh1ivf5"]
+
+[ext_resource type="Script" uid="uid://bxjg885lu0c7y" path="res://scripts/elements/em_label.gd" id="1_f27dx"]
+
+[node name="EM_Label" type="Label"]
+script = ExtResource("1_f27dx")

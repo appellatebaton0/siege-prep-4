@@ -1,0 +1,36 @@
+[gd_scene load_steps=7 format=3 uid="uid://klydinu17kcy"]
+
+[sub_resource type="Gradient" id="Gradient_0ylux"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_d6jcq"]
+gradient = SubResource("Gradient_0ylux")
+width = 30
+
+[sub_resource type="Gradient" id="Gradient_fy104"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_gv1p5"]
+gradient = SubResource("Gradient_fy104")
+width = 12
+height = 44
+
+[sub_resource type="Gradient" id="Gradient_scdo3"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_w003v"]
+gradient = SubResource("Gradient_scdo3")
+width = 18
+height = 8
+
+[node name="Pinboard Concept" type="Node2D"]
+
+[node name="Body" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_d6jcq")
+
+[node name="Leg" type="Sprite2D" parent="Body"]
+position = Vector2(-9.000001, 29.000002)
+texture = SubResource("GradientTexture2D_gv1p5")
+offset = Vector2(0, 22)
+
+[node name="Foot" type="Sprite2D" parent="Body/Leg"]
+position = Vector2(-4.9999995, 41)
+texture = SubResource("GradientTexture2D_w003v")
+offset = Vector2(8, 4)

@@ -1,0 +1,15 @@
+res://scenes/main.tscn
+res://assets/theme.tres
+res://scripts/elements/em_label.gd
+res://default_bus_layout.tres
+res://scripts/dynamic_values/dv_component.gd
+res://scripts/dynamic_values/dynamic_value.gd
+res://scripts/actor.gd
+res://scripts/components/cp_animatedsprite.gd
+res://scripts/dynamic_values/dv_node.gd
+res://scripts/dynamic_values/dv_property.gd
+res://scripts/components/component.gd
+res://scripts/components/area_components/cp_areasub.gd
+res://scripts/components/motion_states/motion_state.gd
+res://scripts/particle_manager.gd
+res://scripts/components/spawner_components/spawn_subcomponent.gd
