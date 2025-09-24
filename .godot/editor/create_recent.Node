@@ -1,5 +1,10 @@
-PropertyDynamicValue
+Sprite2D
+Node2D
+Node
+CollisionShape2D
+FloatControlMotionState
+ControlMotionState
+TileMapLayer
 AnimatedSprite2D
 AnimatedSpriteComponent
 Actor
-Sprite2D

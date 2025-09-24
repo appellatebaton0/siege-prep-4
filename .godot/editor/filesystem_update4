@@ -13,3 +13,16 @@ res://scripts/components/area_components/cp_areasub.gd
 res://scripts/components/motion_states/motion_state.gd
 res://scripts/particle_manager.gd
 res://scripts/components/spawner_components/spawn_subcomponent.gd
+res://scripts/dynamic_values/dv_condition.gd
+res://scripts/dynamic_values/dc_not.gd
+res://scripts/dynamic_values/dc_and.gd
+res://scripts/dynamic_values/dc_or.gd
+res://scripts/global.gd
+res://assets/resources/tileset.tres
+res://scripts/components/motion_states/ms_control.gd
+res://scripts/components/motion_states/cms_float.gd
+res://scripts/components/motion_states/cms_platformer.gd
+res://scripts/components/cp_motion.gd
+res://scripts/dynamic_values/dv_input.gd
+res://scripts/camera.gd
+res://README.md

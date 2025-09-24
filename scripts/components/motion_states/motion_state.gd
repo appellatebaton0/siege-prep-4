@@ -1,5 +1,10 @@
 @abstract
 class_name MotionState extends Component
+func _init():
+	component_id = "MotionState"
+
+## Switch to a different state if a DynamicValue is true, and the motionstate is the current one.
+@export var switch_handles:Dictionary[DynamicValue, MotionState]
 
 @onready var component:MotionComponent = get_parent()
 @onready var character:CharacterBody2D = component.me
@@ -17,15 +22,23 @@ func vec2_move_towards(a:Vector2, b:Vector2, delta:float):
 ## Ran functions
 
 # Active
-@abstract func phys_active(_delta:float)
-@abstract func post_phys_active(_delta:float)
-@abstract func active(_delta:float)
+func phys_active(_delta:float):
+	pass
+func post_phys_active(_delta:float):
+	pass
+func active(_delta:float):
+	pass
 
 # Inactive
-@abstract func phys_inactive(_delta:float)
-@abstract func post_phys_inactive(_delta:float)
-@abstract func inactive(_delta:float)
+func phys_inactive(_delta:float):
+	pass
+func post_phys_inactive(_delta:float):
+	pass
+func inactive(_delta:float):
+	pass
 
 # On change
-@abstract func on_active()
-@abstract func on_inactive()
+func on_active():
+	pass
+func on_inactive():
+	pass

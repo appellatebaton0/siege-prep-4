@@ -1,5 +1,7 @@
 extends ControlMotionState
 class_name FloatControlMotionState
+func _init():
+	component_id = "FloatControlMotionState"
 
 @export var max_speed:float = 90.0 ## The fastest the actor can go by just holding a direction
 

@@ -23,6 +23,15 @@ func get_motion_states() -> Array[MotionState]:
 # The current state
 var current_state:MotionState
 
+# Change the current state
+func change_state(to:MotionState):
+	print("Noted change.")
+	current_state.on_inactive()
+	
+	current_state = to
+	
+	current_state.on_active()
+
 func _ready() -> void:
 	if initial_state != null:
 		current_state = initial_state
@@ -34,6 +43,12 @@ func _process(delta: float) -> void:
 	for state in motion_states:
 		if state == current_state:
 			state.active(delta)
+			
+			# Manage all the active dynamic state-switching handles
+			for handle in state.switch_handles.keys():
+				if handle is DynamicValue: # It is, INTELLISENSE.
+					if handle.value():
+						change_state(state.switch_handles[handle])
 		else:
 			state.inactive(delta)
 

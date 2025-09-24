@@ -1,5 +1,4 @@
-extends MotionState
-class_name ControlMotionState
+@abstract class_name ControlMotionState extends MotionState
 
 @export var input_left:String = "Left" ## Name of left input
 @export var input_right:String = "Right" ## Name of right input

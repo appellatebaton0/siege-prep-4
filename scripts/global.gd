@@ -1,7 +1,7 @@
 extends Node
 
-signal play_sfx(sfx:AudioStream)
-signal new_particle(particle:PackedScene, at:Vector2)
+@warning_ignore("unused_signal") signal play_sfx(sfx:AudioStream)
+@warning_ignore("unused_signal") signal new_particle(particle:PackedScene, at:Vector2)
 
 var global_animations:Array[GlobalAnimation]
 func add_global_animation(additor:GlobalAnimation):

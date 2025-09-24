@@ -1,7 +1,7 @@
-extends NodeDynamicValue
-class_name ComponentDynamicValue
+extends DynamicNodeValue
+class_name DynamicComponentValue
 
-## Responds with a component from an Actor node
+## Responds with a component from an Actor node.
 
 ## The component_id to look for; the component's class - "Component", ie "Area" for AreaComponent
 @export var component_id:String

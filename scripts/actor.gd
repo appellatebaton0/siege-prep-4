@@ -1,5 +1,4 @@
-extends Node2D
-class_name Actor
+class_name Actor extends Node2D
 
 signal freeing
 
