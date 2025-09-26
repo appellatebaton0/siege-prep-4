@@ -2,9 +2,6 @@ class_name PlatformerControlMotionState extends ControlMotionState
 
 ## Allows the actor to be controlled like a platformer.
 
-## Things this will need;
-## Jump buffering / coyote time
-
 ## How long the jump input will save, so you can hit jump before being on the ground and still jump (in seconds).
 @export var jump_buffering := 0.1
 var jump_buffer := 0.0 # The current jump buffer
@@ -46,7 +43,7 @@ func phys_active(delta:float):
 	## Gravity
 	
 	if not character.is_on_floor():
-		character.velocity += character.get_gravity() * gravity_multiplier
+		character.velocity += delta * character.get_gravity() * gravity_multiplier
 	
 	## Jumping
 	
@@ -78,7 +75,7 @@ func phys_active(delta:float):
 		if not abs(character.velocity.x) > max_speed:
 			character.velocity.x = move_toward(character.velocity.x, direction * max_speed, delta * current_acceleration)
 		
-	# Friction!
+	# Friction! Move towards 0 based on the current friction.
 		else:
 			character.velocity.x = move_toward(character.velocity.x, 0, delta * current_friction)
 	else:

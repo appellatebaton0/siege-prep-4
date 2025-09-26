@@ -1,6 +1,6 @@
 extends Component
 class_name HolderComponent
-var me:Node2D = get_me()
+var me:Node = get_me()
 func _init() -> void:
 	component_id = "Holder"
 
@@ -25,12 +25,12 @@ func hold(target:Actor) -> bool:
 			return false # Respond that it wasn't picked up
 	else: # Not holding anything
 		holding = target
-		hold_offset = target.global_position - me.get_global_mouse_position()
+		hold_offset = target.global_position - actor.get_global_mouse_position()
 		picked_up.emit()
 		return true # Respond that it was picked up
 
 func _process(_delta: float) -> void:
 	if holding != null:
-		holding.global_position = me.global_position + hold_offset
+		holding.global_position = actor.global_position + hold_offset
 		if hold_offset.distance_to(Vector2.ZERO) > hold_max_distance:
 			hold_offset /= 1.05

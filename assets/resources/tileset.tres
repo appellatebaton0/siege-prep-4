@@ -6,8 +6,9 @@ colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_5mwl8"]
 gradient = SubResource("Gradient_67cwj")
-width = 512
-height = 512
+width = 24
+height = 24
 
 [resource]
 diffuse_texture = SubResource("GradientTexture2D_5mwl8")
+texture_filter = 1

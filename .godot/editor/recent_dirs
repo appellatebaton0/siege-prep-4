@@ -1,5 +1,7 @@
+res://scenes/components
+res://scripts/components/area_components
+res://scripts/components/motion_states
 res://scripts
 res://assets/resources
-res://scripts/components/motion_states
 res://assets/resources/
 res://

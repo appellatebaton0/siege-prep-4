@@ -16,3 +16,5 @@ Additionally, I'll probably add a LOT to the composition framework I've been bui
         - DynamicComponentValue -> Returns a component from an actor
     - DynamicPropertyValue -> Returns a property from a node
 - CMS_Platformer -> Lets an actor be controlled like a platforming character.
+- ACP_FuncCaller -> Calls functions on components on collision.
+- MS_FuncPlatformer -> Lets an actor be told to move like a platforming character by other nodes

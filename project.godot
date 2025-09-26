@@ -52,10 +52,8 @@ Down={
 
 [layer_names]
 
-2d_physics/layer_1="Mouse"
-2d_physics/layer_2="Apple"
-2d_physics/layer_3="Conveyor"
-2d_physics/layer_4="Glaze"
-2d_physics/layer_5="Topping"
-2d_physics/layer_6="Output"
-2d_physics/layer_7="Input"
+2d_physics/layer_1="CommandBlock"
+2d_physics/layer_2="Mouse"
+2d_physics/layer_3="Player"
+2d_physics/layer_4="Death"
+2d_physics/layer_5="Environment"

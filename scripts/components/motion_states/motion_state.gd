@@ -1,7 +1,5 @@
 @abstract
 class_name MotionState extends Component
-func _init():
-	component_id = "MotionState"
 
 ## Switch to a different state if a DynamicValue is true, and the motionstate is the current one.
 @export var switch_handles:Dictionary[DynamicValue, MotionState]

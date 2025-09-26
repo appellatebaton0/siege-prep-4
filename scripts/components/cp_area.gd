@@ -73,15 +73,24 @@ func get_array_as_layer(array:Array[bool]) -> int:
 			value += int(pow(2.0, i))
 	return value
 
-func layer_match(sub_component:AreaSubComponent, object:CollisionObject2D):
-
-	var sub_comp_mask:Array[bool] = get_layer_as_array(sub_component.collision_mask)
-	var obj_comp_layer:Array[bool] = get_layer_as_array(object.collision_layer)
+func layer_match(sub_component:AreaSubComponent, object:Node2D):
+	
+	var sub_comp_mask := get_layer_as_array(sub_component.collision_mask)
+	var obj_comp_layer:Array[bool]
+	if object is CollisionObject2D:
+		obj_comp_layer = get_layer_as_array(object.collision_layer)
+	elif object is TileMapLayer:
+		# NOTE: This doesn't support tileset's multiple physics layers options.
+		obj_comp_layer = get_layer_as_array(object.tile_set.get_physics_layer_collision_layer(0))
+	else:
+		return false
+	
 	
 	for i in range(len(sub_comp_mask)):
 		if sub_comp_mask[i] and obj_comp_layer[i]:
 			return true
 	return false
+
 
 func _on_area_entered(area:Area2D):
 	var a = area

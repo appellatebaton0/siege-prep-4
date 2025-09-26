@@ -19,16 +19,25 @@ func has_collisions():
 # All the functions called by the AreaComponent, for use
 # by AreaSubComponents
 
-@abstract func on_area_entered(_area:Area2D) -> void
-@abstract func on_body_entered(_body:Node2D) -> void
+func on_area_entered(_area:Area2D) -> void:
+	pass
+func on_body_entered(_body:Node2D) -> void:
+	pass
 
-@abstract func while_colliding_areas(_areas:Array[Area2D], _delta:float) -> void
-@abstract func while_colliding_bodies(_bodies:Array[Node2D], _delta:float) -> void
+func while_colliding_areas(_areas:Array[Area2D], _delta:float) -> void:
+	pass
+func while_colliding_bodies(_bodies:Array[Node2D], _delta:float) -> void:
+	pass
 
-@abstract func while_no_colliding_areas(_delta:float) -> void
-@abstract func while_no_colliding_bodies(_delta:float) -> void
+func while_no_colliding_areas(_delta:float) -> void:
+	pass
+func while_no_colliding_bodies(_delta:float) -> void:
+	pass
 
-@abstract func while_no_collisions(_delta:float) -> void
-@abstract func while_any_collisions(_delta:float) -> void
+func while_no_collisions(_delta:float) -> void:
+	pass
+func while_any_collisions(_delta:float) -> void:
+	pass
 
-@abstract func on_input_event(_viewport: Node, _event: InputEvent, _shape_idx: int) -> void
+func on_input_event(_viewport: Node, _event: InputEvent, _shape_idx: int) -> void:
+	pass
