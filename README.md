@@ -1,9 +1,9 @@
-# siege-prep-3
-The game I'm making for Hackclub's Siege - Prep Week 3 AND Godot Wild Jam #85
+# siege-prep-4
+The game I'm making for Hackclub's Siege - Prep Week 4
 
-The idea is an autumn-themed game about producing a steady supply of candied apples to meet customer demand.
+The idea is a game where you tell a platformer what to do by placing blocks in its path that give it commands
 
-Additionally, I'll probably add a LOT to the composition framework I've been building on game by game...
+And, more building to the framework!
 ## Here's a list of things added for this game thus far;
 ### General
 - DynamicValues -> Allows for node-based glue between components, and for setting up conditions
