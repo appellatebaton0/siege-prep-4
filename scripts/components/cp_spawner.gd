@@ -4,6 +4,8 @@ var me:Node2D = get_me()
 func _init() -> void:
 	component_id = "Spawner"
 
+signal spawning
+
 @onready var options_component:OptionsSpawnerComponent
 @onready var position_component:PositionSpawnerComponent
 @onready var rotation_component:RotationSpawnerComponent
@@ -14,17 +16,20 @@ func _init() -> void:
 ## Alternative option, set the group name to find main in the tree.
 @export var main_group:String
 ## The condition for spawning something. Empty = always true
-@export var condition:Condition
+@export var condition:DynamicCondition
 
-@export var spawn_limit:int = 0 ## How many actors this spawner can create at maximum (-1 = infinite)
-var spawned_so_far:int = 0
-@export var auto_spawn:bool = false ## Whether the spawner automatically starts spawning.
-@export var spawn_interval:float = 0.0 ## How long to wait between each spawn
-@export var spawn_time:float = 0.0 ## The time before the first spawn
+@export var spawn_limit := 0 ## How many actors this spawner can create at maximum (-1 = infinite)
+var spawned_so_far := 0
+@export var auto_spawn := false ## Whether the spawner automatically starts spawning.
+@export var spawn_signal_interval := 1.0 ## How long to wait before sending the "spawning" signal. Must be less than spawn_interval.
+var sent_signal := false ## Whether the signal's been sent this go around.
+@export var spawn_interval := 1.0 ## How long to wait between each spawn
+@export var spawn_time := 0.0 ## The time before the first spawn
+
 
 func _ready() -> void:
 	
-	if main_group != null:
+	if main_group != null and main_group != "":
 		main = get_tree().get_first_node_in_group(main_group)
 	
 	for child in get_children():
@@ -36,6 +41,8 @@ func _ready() -> void:
 			rotation_component = child
 		elif child is PositionSpawnerComponent:
 			position_component = child
+		elif child is DynamicCondition and condition == null:
+			condition = child
 
 func get_actor_motion_component(from:Actor) -> MotionComponent:
 	for component in from.get_components():
@@ -64,8 +71,14 @@ func spawn():
 
 func _process(delta: float) -> void:
 	if auto_spawn and actor.is_active():
-		spawn_time = move_toward(spawn_time, 0, delta)
-		
-		if condition.valid() and spawn_time <= 0 and (spawned_so_far < spawn_limit or spawn_limit < 0):
-			spawn()
-			spawn_time = spawn_interval
+		if condition.value() and (spawned_so_far < spawn_limit or spawn_limit < 0):
+			spawn_time = move_toward(spawn_time, spawn_interval, delta)
+			
+			if spawn_time >= spawn_signal_interval and not sent_signal:
+				spawning.emit()
+				sent_signal = true
+			
+			if spawn_time >= spawn_interval:
+				spawn()
+				spawn_time = 0.0
+				sent_signal = false

@@ -2,6 +2,8 @@ extends Component
 class_name AreaComponent
 var me:Area2D = get_me()
 
+signal collided
+
 func _init() -> void:
 	component_id = "Area"
 
@@ -102,6 +104,7 @@ func _on_area_entered(area:Area2D):
 		# Only do so if the component has a layer matching the area's
 		if layer_match(component, area):
 			component.on_area_entered(area)
+	collided.emit()
 	
 func _on_body_entered(body:Node2D):
 	# Run the body function for every valid subcomponent
@@ -109,6 +112,7 @@ func _on_body_entered(body:Node2D):
 		# Only do so if the component has a layer matching the body's
 		if layer_match(component, body):
 			component.on_body_entered(body)
+	collided.emit()
 
 func _process(delta: float) -> void:
 	var bodies:Array[Node2D] = me.get_overlapping_bodies()
@@ -120,6 +124,11 @@ func _process(delta: float) -> void:
 		if a is AreaComponent:
 			if a.actor == actor:
 				areas.erase(area)
+	for body in bodies:
+		var b = body
+		if b is MotionComponent or b is StaticComponent:
+			if b.actor == actor:
+				bodies.erase(body)
 	
 	for component in sub_components:
 		

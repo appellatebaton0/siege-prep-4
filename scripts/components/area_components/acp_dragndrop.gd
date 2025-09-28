@@ -26,7 +26,6 @@ func on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void
 		# If looking for any input,
 		# or toggled and is a click down
 		if not toggle or event.is_pressed():
-			
 			# Look for a HolderComponent in the current collisions
 			for collision in get_collisions():
 				var node = collision # Abstract type cause dum

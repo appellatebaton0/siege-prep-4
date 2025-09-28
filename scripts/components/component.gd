@@ -8,7 +8,7 @@ func _init():
 	## OR 
 	## There's a Component without a initialize
 	## function for its component id.
-	print(self, " failed.")
+	print(name, " failed.")
 	assert(false)
 
 ## The actor the component belongs to

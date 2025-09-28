@@ -1,0 +1,95 @@
+[gd_scene load_steps=14 format=3 uid="uid://coy4f4cdmgqfd"]
+
+[ext_resource type="Script" uid="uid://dwh0yifrqxhcp" path="res://scripts/actor.gd" id="1_a0tkn"]
+[ext_resource type="Texture2D" uid="uid://ggvd7ehqfweg" path="res://assets/textures/stop_moving.png" id="2_pwj8k"]
+[ext_resource type="PackedScene" uid="uid://b7m0l4xy8303h" path="res://scenes/components/cp_area.tscn" id="3_5uxxa"]
+[ext_resource type="Script" uid="uid://cp7jolp00vhsj" path="res://scripts/components/area_components/acp_dragndrop.gd" id="4_76q3g"]
+[ext_resource type="Script" uid="uid://cmu7dbdfx218g" path="res://scripts/components/area_components/acp_funccaller.gd" id="5_78y21"]
+[ext_resource type="Script" uid="uid://cjjqx5jo072kl" path="res://scripts/dynamic_values/dv_component.gd" id="6_hpguw"]
+[ext_resource type="Script" uid="uid://58vjd3u66x8p" path="res://scripts/components/area_components/acp_control_rotate.gd" id="7_coccb"]
+[ext_resource type="Script" uid="uid://d28oq4iu2elp8" path="res://scripts/components/cp_holdable.gd" id="8_1jc7l"]
+[ext_resource type="Texture2D" uid="uid://bd4b6pangx3uh" path="res://assets/textures/guideline.png" id="9_17tr3"]
+[ext_resource type="PackedScene" uid="uid://g1ehoqi5qweg" path="res://scenes/components/cp_static.tscn" id="10_pwj8k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eb6dy"]
+size = Vector2(12, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_003ck"]
+size = Vector2(10, 22)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5uxxa"]
+size = Vector2(12, 24)
+
+[node name="StopMoving" type="Node2D"]
+script = ExtResource("1_a0tkn")
+metadata/_custom_type_script = "uid://dwh0yifrqxhcp"
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, 6)
+texture = ExtResource("2_pwj8k")
+
+[node name="CP_Area" parent="." instance=ExtResource("3_5uxxa")]
+collision_mask = 23
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CP_Area"]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_eb6dy")
+
+[node name="ACP_DragNDrop" type="Node" parent="CP_Area"]
+script = ExtResource("4_76q3g")
+toggle = true
+collision_mask = 2
+metadata/_custom_type_script = "uid://cp7jolp00vhsj"
+
+[node name="ACP_FuncCaller" type="Node" parent="CP_Area"]
+script = ExtResource("5_78y21")
+functions = Dictionary[String, bool]({
+"stop_moving": true
+})
+collision_mask = 4
+
+[node name="DynamicComponentValue" type="Node" parent="CP_Area/ACP_FuncCaller"]
+script = ExtResource("6_hpguw")
+component_id = "FuncPlatformerMotionState"
+metadata/_custom_type_script = "uid://cjjqx5jo072kl"
+
+[node name="ControlRotateAreaSubComponent" type="Node" parent="CP_Area" node_paths=PackedStringArray("requires_held")]
+script = ExtResource("7_coccb")
+rotation_amount = 90.0
+requires_held = NodePath("../../CP_Holdable")
+collision_mask = 2
+metadata/_custom_type_script = "uid://58vjd3u66x8p"
+
+[node name="CP_Holdable" type="Node" parent="." node_paths=PackedStringArray("placement_indicator", "placement_checker")]
+script = ExtResource("8_1jc7l")
+grid_locked = true
+grid_size = Vector2(12, 12)
+grid_offset = Vector2(6, 6)
+placement_visibility_limits = {
+"x": Vector2(-123123, 135135),
+"y": Vector2(-135135, 1351351)
+}
+placement_indicator = NodePath("Sprite2D2")
+placement_checker = NodePath("CP_Area")
+metadata/_custom_type_script = "uid://d28oq4iu2elp8"
+
+[node name="CP_Area" parent="CP_Holdable" instance=ExtResource("3_5uxxa")]
+collision_mask = 21
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CP_Holdable/CP_Area"]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_003ck")
+
+[node name="Sprite2D2" type="Sprite2D" parent="CP_Holdable"]
+modulate = Color(1, 1, 1, 0.8901961)
+z_index = -1
+texture_filter = 1
+texture = ExtResource("9_17tr3")
+offset = Vector2(0, 6)
+
+[node name="CP_Static" parent="." instance=ExtResource("10_pwj8k")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CP_Static"]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_5uxxa")

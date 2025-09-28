@@ -1,5 +1,7 @@
 extends MotionState
 class_name StraightMotionState
+func _init():
+	component_id = "StraightMotionState"
 
 @export var direction:Vector2 = Vector2.ZERO
 
@@ -9,6 +11,6 @@ class_name StraightMotionState
 func _ready() -> void:
 	direction = direction.normalized()
 
-func phys_active(delta:float):
+func phys_active(_delta:float):
 	character.velocity = vec2_move_towards(character.velocity, direction * max_speed, acceleration)
 	

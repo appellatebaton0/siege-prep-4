@@ -1,4 +1,8 @@
+res://scenes/actors
 res://scenes/components
+res://scripts/components
+res://scripts/dynamic_values
+res://assets/textures
 res://scripts/components/area_components
 res://scripts/components/motion_states
 res://scripts

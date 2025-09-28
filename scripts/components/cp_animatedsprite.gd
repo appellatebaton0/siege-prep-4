@@ -25,6 +25,8 @@ func _process(_delta: float) -> void:
 	if global_animation != null:
 		me.frame = global_animation.current_frame
 	if motion_ties != null and motion_component != null:
+		if motion_component.me.velocity.x != 0:
+			me.flip_h = motion_component.me.velocity.x < 0
 		for tie in motion_ties:
 			if motion_component.substate == tie:
 				if me.sprite_frames.has_animation(motion_ties[tie]):

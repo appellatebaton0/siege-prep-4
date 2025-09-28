@@ -1,6 +1,8 @@
 extends Node
 class_name ParticleManager
 
+@export var add_to:DynamicNodeValue
+
 var particles:Array[GPUParticles2D]
 
 func _ready() -> void:
@@ -9,7 +11,10 @@ func _ready() -> void:
 func _on_new_particle(particle:PackedScene, at:Vector2):
 	var new:GPUParticles2D = particle.instantiate()
 	
-	add_child(new)
+	if main != null:
+		main.value().add_child(new)
+	else:
+		add_child(new)
 	new.global_position = at
 	new.emitting = true
 	new.z_index = 4

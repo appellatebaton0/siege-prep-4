@@ -34,8 +34,12 @@ func _ready() -> void:
 		placement_checker.actor = actor
 
 var held:bool = false
+var held_by:HolderComponent
 
 func hold_by(holder:HolderComponent) -> bool:
+	
+	held_by = holder
+	
 	# Try to pick up/set down.
 	held = holder.hold(actor)
 	
@@ -55,23 +59,31 @@ func hold_by(holder:HolderComponent) -> bool:
 	
 	return held
 
-func _process(_delta: float) -> void:
-	if not held and grid_locked: # If the placement failed their position should be locked to a grid
-		# Round the actor's position to the grid
-		actor.global_position = round(((actor.global_position - grid_offset) / grid_size)) * grid_size + grid_offset
+func _process(delta: float) -> void:
+	
+	if placement_checker != null:
+		placement_checker.me.rotation = actor.rotation
+	if placement_indicator != null:
+		placement_indicator.rotation = actor.rotation
+	
 	
 	# Raise the z_index while held
 	actor.z_index = original_z_index + 3 if held else original_z_index
 
 	# Position the placement_indicator and checker
+	var round_position = round(((actor.global_position - grid_offset) / grid_size)) * grid_size + grid_offset
 	if placement_indicator != null and grid_locked:
 		
-		placement_indicator.global_position = round(((actor.global_position - grid_offset) / grid_size)) * grid_size + grid_offset
+		placement_indicator.global_position = round_position
 		var in_x_bounds = (placement_indicator.global_position.x > placement_visibility_limits["x"].x and placement_indicator.global_position.x < placement_visibility_limits["x"].y)
 		var in_y_bounds = (placement_indicator.global_position.y > placement_visibility_limits["y"].x and placement_indicator.global_position.y < placement_visibility_limits["y"].y)
-		placement_indicator.visible = actor.visible and in_x_bounds and in_y_bounds
+		placement_indicator.modulate.a = move_toward(placement_indicator.modulate.a, 1 if actor.visible and in_x_bounds and in_y_bounds and held else 0, delta * 10)
 	if placement_checker != null:
 		if grid_locked:
-			placement_checker.me.global_position = round(((actor.global_position - grid_offset) / grid_size)) * grid_size + grid_offset
+			placement_checker.me.global_position = round_position
 		else:
 			placement_checker.me.global_position = actor.global_position
+	
+	if not held and grid_locked: # If the placement failed their position should be locked to a grid
+		# Round the actor's position to the grid
+		actor.global_position = round_position

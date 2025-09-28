@@ -29,6 +29,9 @@ func hold(target:Actor) -> bool:
 		picked_up.emit()
 		return true # Respond that it was picked up
 
+func change_offset(to:Vector2):
+	hold_offset = to
+
 func _process(_delta: float) -> void:
 	if holding != null:
 		holding.global_position = actor.global_position + hold_offset

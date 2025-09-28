@@ -1,67 +1,40 @@
-[gd_scene load_steps=28 format=4 uid="uid://chm3si0nicqxd"]
+[gd_scene load_steps=22 format=4 uid="uid://chm3si0nicqxd"]
 
 [ext_resource type="Script" uid="uid://bo6uaa6310n4q" path="res://scripts/camera.gd" id="1_muem4"]
 [ext_resource type="Script" uid="uid://dwh0yifrqxhcp" path="res://scripts/actor.gd" id="3_pm3ni"]
-[ext_resource type="Texture2D" uid="uid://be6qno7g6ct2" path="res://icon.svg" id="6_o6xl0"]
-[ext_resource type="PackedScene" uid="uid://byojuvig761hd" path="res://scenes/components/cp_motion.tscn" id="6_tipki"]
-[ext_resource type="Script" uid="uid://by08n6uqy4nll" path="res://scripts/components/motion_states/ms_funcplatformer.gd" id="8_85g3d"]
-[ext_resource type="Texture2D" uid="uid://cvvjijlmnc2be" path="res://assets/resources/tileset.tres" id="8_choun"]
-[ext_resource type="PackedScene" uid="uid://208ojfrjlttc" path="res://scenes/components/cp_animatedsprite.tscn" id="8_jbj1t"]
-[ext_resource type="PackedScene" uid="uid://b7m0l4xy8303h" path="res://scenes/components/cp_area.tscn" id="8_ya4ey"]
+[ext_resource type="PackedScene" uid="uid://b12v3ifxeejh3" path="res://scenes/actors/bot.tscn" id="5_jkv2x"]
+[ext_resource type="PackedScene" uid="uid://ctvjgw7gos24a" path="res://scenes/components/cp_spawner.tscn" id="6_eb6dy"]
+[ext_resource type="PackedScene" uid="uid://d2hotsmf2sgv1" path="res://scenes/actors/turn_around.tscn" id="6_ya4ey"]
+[ext_resource type="Script" uid="uid://5y4fq21khgxc" path="res://scripts/dynamic_values/dc_length.gd" id="7_a8y0u"]
+[ext_resource type="PackedScene" uid="uid://cekrqcvgpgxeh" path="res://scenes/actors/mouse.tscn" id="8_eb6dy"]
+[ext_resource type="Script" uid="uid://c0rn4mlevdrf2" path="res://scripts/dynamic_values/dv_group.gd" id="8_jkv2x"]
 [ext_resource type="Script" uid="uid://bcli0gjaiqg0u" path="res://scripts/dynamic_values/dv_node.gd" id="9_choun"]
-[ext_resource type="Script" uid="uid://cp7jolp00vhsj" path="res://scripts/components/area_components/acp_dragndrop.gd" id="9_trceg"]
-[ext_resource type="Script" uid="uid://d28oq4iu2elp8" path="res://scripts/components/cp_holdable.gd" id="10_a8y0u"]
-[ext_resource type="Script" uid="uid://cmu7dbdfx218g" path="res://scripts/components/area_components/acp_funccaller.gd" id="10_jkv2x"]
-[ext_resource type="Script" uid="uid://cjjqx5jo072kl" path="res://scripts/dynamic_values/dv_component.gd" id="11_jkv2x"]
-[ext_resource type="Script" uid="uid://c7m8cx6r12svp" path="res://scripts/components/motion_states/ms_mouse.gd" id="12_jkv2x"]
-[ext_resource type="Script" uid="uid://dsvhrcfk13yey" path="res://scripts/components/cp_holder.gd" id="13_jbj1t"]
+[ext_resource type="Script" uid="uid://ctwtre00simba" path="res://scripts/components/spawner_components/options/osc_random.gd" id="9_jkv2x"]
+[ext_resource type="PackedScene" uid="uid://bmsrqln0m0v3o" path="res://scenes/actors/start_moving.tscn" id="9_trceg"]
+[ext_resource type="PackedScene" uid="uid://coy4f4cdmgqfd" path="res://scenes/actors/stop_moving.tscn" id="10_a8y0u"]
+[ext_resource type="PackedScene" uid="uid://dfryyubqno6tb" path="res://scenes/actors/jump.tscn" id="11_jkv2x"]
+[ext_resource type="Script" uid="uid://dnog3jll3kr3h" path="res://scripts/components/cp_particle.gd" id="11_muem4"]
+[ext_resource type="PackedScene" uid="uid://bxq0gwqjhicjn" path="res://assets/particles/bot_spawning.tscn" id="12_dp3eg"]
+[ext_resource type="Texture2D" uid="uid://dxnf7qnqax757" path="res://assets/textures/tile.png" id="12_jbj1t"]
+[ext_resource type="Script" uid="uid://d28oq4iu2elp8" path="res://scripts/components/cp_holdable.gd" id="13_dp3eg"]
 [ext_resource type="Script" uid="uid://euj3kp8pipih" path="res://scripts/particle_manager.gd" id="29_fv21b"]
 [ext_resource type="Script" uid="uid://cv207a4o6oygf" path="res://scripts/sfx_manager.gd" id="29_yq6so"]
 
-[sub_resource type="Gradient" id="Gradient_85g3d"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_choun"]
-gradient = SubResource("Gradient_85g3d")
-width = 12
-height = 12
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tipki"]
-size = Vector2(12, 12)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_muem4"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_eb6dy"]
-size = Vector2(12, 12)
-
-[sub_resource type="Gradient" id="Gradient_trceg"]
-offsets = PackedFloat32Array(0.52922076)
-colors = PackedColorArray(0.52922076, 0.52922076, 0.52922076, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_a8y0u"]
-gradient = SubResource("Gradient_trceg")
-width = 12
-height = 12
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tipki"]
-texture = ExtResource("8_choun")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_muem4"]
+texture = ExtResource("12_jbj1t")
 texture_region_size = Vector2i(12, 12)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-6, -6, 6, -6, 6, 6, -6, 6)
 1:0/0 = 0
-1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-6, -6, 6, -6, 6, 6, -6, 6)
-0:1/0 = 0
-0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-6, -6, 6, -6, 6, 6, -6, 6)
-1:1/0 = 0
-1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-6, -6, 6, -6, 6, 6, -6, 6)
+1:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-6, -6, 6, -6, 6, 6, -6, 6)
 
 [sub_resource type="TileSet" id="TileSet_85g3d"]
 tile_size = Vector2i(12, 12)
 physics_layer_0/collision_layer = 16
 physics_layer_0/collision_mask = 29
-sources/0 = SubResource("TileSetAtlasSource_tipki")
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_muem4"]
-size = Vector2(1, 1)
+physics_layer_1/collision_layer = 8
+physics_layer_1/collision_mask = 29
+sources/1 = SubResource("TileSetAtlasSource_muem4")
 
 [node name="Main" type="Node2D"]
 rotation = 0.00023596727
@@ -72,9 +45,8 @@ ignore_rotation = false
 zoom = Vector2(4, 4)
 script = ExtResource("1_muem4")
 
-[node name="NodeDynamicValue" type="Node" parent="Camera" node_paths=PackedStringArray("node")]
+[node name="NodeDynamicValue" type="Node" parent="Camera"]
 script = ExtResource("9_choun")
-node = NodePath("../../Player")
 metadata/_custom_type_script = "uid://bcli0gjaiqg0u"
 
 [node name="ParticleManager" type="Node" parent="."]
@@ -83,96 +55,75 @@ script = ExtResource("29_fv21b")
 [node name="SFXManager" type="Node" parent="."]
 script = ExtResource("29_yq6so")
 
-[node name="Player" type="Node2D" parent="."]
-position = Vector2(6.9917393, -35.001587)
-script = ExtResource("3_pm3ni")
-static_texture = ExtResource("6_o6xl0")
-metadata/_custom_type_script = "uid://dwh0yifrqxhcp"
-
-[node name="Body" type="Sprite2D" parent="Player"]
-texture = SubResource("GradientTexture2D_choun")
-
-[node name="CP_Motion" parent="Player" instance=ExtResource("6_tipki")]
-collision_layer = 4
-collision_mask = 25
-
-[node name="MS_FuncPlatformer" type="Node" parent="Player/CP_Motion"]
-script = ExtResource("8_85g3d")
-floor_acceleration = 5000.0
-air_acceleration = 4600.0
-floor_friction = 60.0
-air_friction = 50.0
-is_moving = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/CP_Motion"]
-shape = SubResource("RectangleShape2D_tipki")
-
-[node name="CP_AnimatedSprite" parent="Player" instance=ExtResource("8_jbj1t")]
-sprite_frames = SubResource("SpriteFrames_muem4")
-motion_ties = Dictionary[String, String]({
-"Idle": "idle",
-"Midair": "midair",
-"Walking": "walking"
-})
-
-[node name="TurnAround" type="Node2D" parent="."]
-position = Vector2(48.99764, -10.011562)
+[node name="BotSpawner" type="Node2D" parent="."]
+position = Vector2(0.9945679, -23.000235)
 script = ExtResource("3_pm3ni")
 metadata/_custom_type_script = "uid://dwh0yifrqxhcp"
 
-[node name="Sprite2D2" type="Sprite2D" parent="TurnAround"]
+[node name="CP_Spawner" parent="BotSpawner" node_paths=PackedStringArray("main") instance=ExtResource("6_eb6dy")]
+main = NodePath("../..")
+spawn_limit = -1
+auto_spawn = true
+spawn_signal_interval = 0.5
+spawn_interval = 1.6
 
-[node name="CP_Area" parent="TurnAround" instance=ExtResource("8_ya4ey")]
-collision_mask = 23
+[node name="DynamicLengthCondition" type="Node" parent="BotSpawner/CP_Spawner" node_paths=PackedStringArray("input")]
+script = ExtResource("7_a8y0u")
+input = NodePath("DynamicGroupValue")
+comparison = 1
+comparator = 1
+metadata/_custom_type_script = "uid://5y4fq21khgxc"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TurnAround/CP_Area"]
-shape = SubResource("RectangleShape2D_eb6dy")
+[node name="DynamicGroupValue" type="Node" parent="BotSpawner/CP_Spawner/DynamicLengthCondition"]
+script = ExtResource("8_jkv2x")
+group_name = "Bot"
+metadata/_custom_type_script = "uid://c0rn4mlevdrf2"
 
-[node name="ACP_DragNDrop" type="Node" parent="TurnAround/CP_Area"]
-script = ExtResource("9_trceg")
-collision_mask = 2
-metadata/_custom_type_script = "uid://cp7jolp00vhsj"
+[node name="RandomOptionsSpawnerComponent" type="Node" parent="BotSpawner/CP_Spawner"]
+script = ExtResource("9_jkv2x")
+options = Array[PackedScene]([ExtResource("5_jkv2x")])
+metadata/_custom_type_script = "uid://ctwtre00simba"
 
-[node name="ACP_FuncCaller" type="Node" parent="TurnAround/CP_Area"]
-script = ExtResource("10_jkv2x")
-functions = Dictionary[String, bool]({
-"turn_around": false
-})
-collision_mask = 4
+[node name="ParticleComponent" type="Node" parent="BotSpawner"]
+script = ExtResource("11_muem4")
+particle = ExtResource("12_dp3eg")
+metadata/_custom_type_script = "uid://dnog3jll3kr3h"
 
-[node name="DynamicComponentValue" type="Node" parent="TurnAround/CP_Area/ACP_FuncCaller"]
-script = ExtResource("11_jkv2x")
-component_id = "FuncPlatformerMotionState"
-metadata/_custom_type_script = "uid://cjjqx5jo072kl"
-
-[node name="CP_Holdable" type="Node" parent="TurnAround"]
-script = ExtResource("10_a8y0u")
+[node name="HoldableComponent" type="Node" parent="BotSpawner"]
+script = ExtResource("13_dp3eg")
 grid_locked = true
-grid_size = Vector2(12, 12)
-grid_offset = Vector2(6, 6)
+grid_offset = Vector2(6, -2)
 metadata/_custom_type_script = "uid://d28oq4iu2elp8"
 
-[node name="Sprite2D" type="Sprite2D" parent="TurnAround"]
-texture = SubResource("GradientTexture2D_a8y0u")
+[node name="TurnAround" parent="." instance=ExtResource("6_ya4ey")]
+position = Vector2(42.99575, -18.010145)
+
+[node name="TurnAround2" parent="." instance=ExtResource("6_ya4ey")]
+position = Vector2(-39.004482, -18.990797)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAD//wAAAAABAAAAAAAAAAAAAAAAAAAAAAD8/wAAAAAAAAAAAAD8/wEAAAABAAAAAAD9/wAAAAABAAAAAAD9/wEAAAAAAAAAAAD+/wAAAAAAAAAAAAD+/wEAAAABAAAAAAD//wEAAAAAAAAAAAAAAAEAAAABAAAAAAABAAAAAAABAAAAAAABAAEAAAAAAAAAAAACAAAAAAAAAAAAAAACAAEAAAABAAAAAAADAAAAAAABAAAAAAADAAEAAAAAAAAAAAAEAAAAAAAAAAAAAAAEAAEAAAABAAAAAAAFAAAAAAABAAAAAAAFAAEAAAAAAAAAAAAGAAAAAAAAAAAAAAAGAAEAAAABAAAAAAD6/wAAAAAAAAAAAAD7/wAAAAABAAAAAAD6/wEAAAABAAAAAAD6/wIAAAAAAAAAAAD7/wEAAAAAAAAAAAD7/wIAAAABAAAAAAD8/wIAAAAAAAAAAAD9/wIAAAABAAAAAAD+/wIAAAAAAAAAAAD//wIAAAABAAAAAAAAAAIAAAAAAAAAAAABAAIAAAABAAAAAAACAAIAAAAAAAAAAAADAAIAAAABAAAAAAAEAAIAAAAAAAAAAAAFAAIAAAABAAAAAAAHAAAAAAABAAAAAAAGAAIAAAAAAAAAAAAHAAEAAAAAAAAAAAAHAAIAAAABAAAAAAAIAAAAAAAAAAAAAAAJAAAAAAABAAAAAAAIAAEAAAABAAAAAAAIAAIAAAAAAAAAAAAJAAEAAAAAAAAAAAAJAAIAAAABAAAAAAAKAAAAAAAAAAAAAAAKAAEAAAABAAAAAAAKAAIAAAAAAAAAAAD4/wAAAAAAAAAAAAD4/wEAAAABAAAAAAD5/wAAAAABAAAAAAD5/wEAAAAAAAAAAAD4/wIAAAAAAAAAAAD5/wIAAAABAAAAAAALAAAAAAABAAAAAAALAAEAAAAAAAAAAAALAAIAAAABAAAAAAA=")
+texture_filter = 1
+tile_map_data = PackedByteArray("AAD//wAAAQAAAAAAAAAAAAAAAQAAAAAAAAD8/wAAAQAAAAAAAAD8/wEAAQAAAAAAAAD9/wAAAQAAAAAAAAD9/wEAAQAAAAAAAAD+/wAAAQAAAAAAAAD+/wEAAQAAAAAAAAD//wEAAQAAAAAAAAAAAAEAAQAAAAAAAAABAAAAAQAAAAAAAAABAAEAAQAAAAAAAAACAAAAAQAAAAAAAAACAAEAAQAAAAAAAAADAAAAAQAAAAAAAAADAAEAAQAAAAAAAAAEAAAAAQAAAAAAAAAEAAEAAQAAAAAAAAAFAAAAAQAAAAAAAAAFAAEAAQAAAAAAAAAGAAAAAQAAAAAAAAAGAAEAAQAAAAAAAAD6/wAAAQAAAAAAAAD7/wAAAQAAAAAAAAD6/wEAAQAAAAAAAAD6/wIAAQAAAAAAAAD7/wEAAQAAAAAAAAD7/wIAAQAAAAAAAAD8/wIAAQAAAAAAAAD9/wIAAQAAAAAAAAD+/wIAAQAAAAAAAAD//wIAAQAAAAAAAAAAAAIAAQAAAAAAAAABAAIAAQAAAAAAAAACAAIAAQAAAAAAAAADAAIAAQAAAAAAAAAEAAIAAQAAAAAAAAAFAAIAAQAAAAAAAAAHAAAAAQAAAAAAAAAGAAIAAQAAAAAAAAAHAAEAAQAAAAAAAAAHAAIAAQAAAAAAAAAIAAAAAQAAAAAAAAAJAAAAAQAAAAAAAAAIAAEAAQAAAAAAAAAIAAIAAQAAAAAAAAAJAAEAAQAAAAAAAAAJAAIAAQAAAAAAAAAKAAAAAQAAAAAAAAAKAAEAAQAAAAAAAAAKAAIAAQAAAAAAAAD4/wAAAQAAAAAAAAD4/wEAAQAAAAAAAAD5/wAAAQAAAAAAAAD5/wEAAQAAAAAAAAD4/wIAAQAAAAAAAAD5/wIAAQAAAAAAAAALAAAAAQAAAAAAAAALAAEAAQAAAAAAAAALAAIAAQAAAAAAAAD3//7/AQABAAAAAAD3////AQABAAAAAAD3/wAAAQAAAAAAAAD4//7/AQABAAAAAAD4////AQABAAAAAAD5//7/AQABAAAAAAD5////AQABAAAAAAD6//7/AQABAAAAAAD6////AQABAAAAAAAHAP7/AQABAAAAAAAHAP//AQABAAAAAAAIAP7/AQABAAAAAAAIAP//AQABAAAAAAAJAP7/AQABAAAAAAAJAP//AQABAAAAAAA=")
 tile_set = SubResource("TileSet_85g3d")
 
-[node name="Mouse" type="Node2D" parent="."]
-script = ExtResource("3_pm3ni")
-metadata/_custom_type_script = "uid://dwh0yifrqxhcp"
+[node name="Mouse" parent="." instance=ExtResource("8_eb6dy")]
 
-[node name="CP_Motion" parent="Mouse" instance=ExtResource("6_tipki")]
-collision_layer = 2
+[node name="StartMoving" parent="." instance=ExtResource("9_trceg")]
+position = Vector2(-76.01062, -44.982067)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Mouse/CP_Motion"]
-shape = SubResource("RectangleShape2D_muem4")
+[node name="StartMoving2" parent="." instance=ExtResource("9_trceg")]
+position = Vector2(-131.01085, -45.96909)
 
-[node name="MS_Mouse" type="Node" parent="Mouse/CP_Motion"]
-script = ExtResource("12_jkv2x")
-metadata/_custom_type_script = "uid://c7m8cx6r12svp"
+[node name="StopMoving" parent="." instance=ExtResource("10_a8y0u")]
+position = Vector2(-33.01062, -44.992214)
 
-[node name="CP_Holder" type="Node" parent="Mouse"]
-script = ExtResource("13_jbj1t")
-metadata/_custom_type_script = "uid://dsvhrcfk13yey"
+[node name="StopMoving2" parent="." instance=ExtResource("10_a8y0u")]
+position = Vector2(-98.01416, -59.976875)
+
+[node name="Jump" parent="." instance=ExtResource("11_jkv2x")]
+position = Vector2(-65.016754, -70.984665)
+
+[node name="Jump2" parent="." instance=ExtResource("11_jkv2x")]
+position = Vector2(-15.01699, -71.99646)
+
+[connection signal="spawning" from="BotSpawner/CP_Spawner" to="BotSpawner/ParticleComponent" method="make"]

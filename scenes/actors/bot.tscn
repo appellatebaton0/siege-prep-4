@@ -1,0 +1,136 @@
+[gd_scene load_steps=20 format=3 uid="uid://b12v3ifxeejh3"]
+
+[ext_resource type="Script" uid="uid://dwh0yifrqxhcp" path="res://scripts/actor.gd" id="1_7rwdc"]
+[ext_resource type="PackedScene" uid="uid://byojuvig761hd" path="res://scenes/components/cp_motion.tscn" id="3_i1qa5"]
+[ext_resource type="Script" uid="uid://by08n6uqy4nll" path="res://scripts/components/motion_states/ms_funcplatformer.gd" id="4_g704q"]
+[ext_resource type="PackedScene" uid="uid://208ojfrjlttc" path="res://scenes/components/cp_animatedsprite.tscn" id="5_51svh"]
+[ext_resource type="Texture2D" uid="uid://dwxsq0yw4o4ac" path="res://assets/textures/bot.png" id="6_ad8id"]
+[ext_resource type="PackedScene" uid="uid://c5lgrvfkkeake" path="res://scenes/components/cp_free.tscn" id="6_i1qa5"]
+[ext_resource type="PackedScene" uid="uid://b7m0l4xy8303h" path="res://scenes/components/cp_area.tscn" id="7_g704q"]
+[ext_resource type="Script" uid="uid://dx62hdsswpsqh" path="res://scripts/dynamic_values/dv_input.gd" id="7_tqdjd"]
+[ext_resource type="Script" uid="uid://dnog3jll3kr3h" path="res://scripts/components/cp_particle.gd" id="8_51svh"]
+[ext_resource type="PackedScene" uid="uid://cvqj1oy6wp4bj" path="res://assets/particles/bot_made.tscn" id="9_tqdjd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tipki"]
+size = Vector2(10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i1qa5"]
+atlas = ExtResource("6_ad8id")
+region = Rect2(0, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g704q"]
+atlas = ExtResource("6_ad8id")
+region = Rect2(36, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_51svh"]
+atlas = ExtResource("6_ad8id")
+region = Rect2(0, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tqdjd"]
+atlas = ExtResource("6_ad8id")
+region = Rect2(12, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ydqb"]
+atlas = ExtResource("6_ad8id")
+region = Rect2(0, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_waqft"]
+atlas = ExtResource("6_ad8id")
+region = Rect2(24, 0, 12, 12)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_muem4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i1qa5")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g704q")
+}],
+"loop": true,
+"name": &"midair",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_51svh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tqdjd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ydqb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_waqft")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i1qa5"]
+size = Vector2(12, 12)
+
+[node name="Bot" type="Node2D" groups=["Bot"]]
+script = ExtResource("1_7rwdc")
+metadata/_custom_type_script = "uid://dwh0yifrqxhcp"
+
+[node name="CP_Motion" parent="." instance=ExtResource("3_i1qa5")]
+collision_layer = 4
+collision_mask = 25
+
+[node name="MS_FuncPlatformer" type="Node" parent="CP_Motion"]
+script = ExtResource("4_g704q")
+jump_velocity = 175.0
+floor_acceleration = 5000.0
+air_acceleration = 4600.0
+floor_friction = 60.0
+air_friction = 40.0
+max_speed = 52.5
+gravity_multiplier = 0.3
+is_moving = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CP_Motion"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_tipki")
+
+[node name="CP_AnimatedSprite" parent="." instance=ExtResource("5_51svh")]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_muem4")
+animation = &"walking"
+frame_progress = 0.8817249
+motion_ties = Dictionary[String, String]({
+"Idle": "idle",
+"Midair": "midair",
+"Walking": "walking"
+})
+
+[node name="CP_Free" parent="." instance=ExtResource("6_i1qa5")]
+
+[node name="DynamicInputValue" type="Node" parent="CP_Free"]
+script = ExtResource("7_tqdjd")
+input_name = "Reset"
+metadata/_custom_type_script = "uid://dx62hdsswpsqh"
+
+[node name="CP_Area" parent="." instance=ExtResource("7_g704q")]
+collision_layer = 4
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CP_Area"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_i1qa5")
+
+[node name="ParticleComponent" type="Node" parent="."]
+script = ExtResource("8_51svh")
+particle = ExtResource("9_tqdjd")
+make_on_ready = true
+metadata/_custom_type_script = "uid://dnog3jll3kr3h"
+
+[connection signal="freeing" from="." to="ParticleComponent" method="make"]
+[connection signal="collided" from="CP_Area" to="CP_Free" method="free_actor"]

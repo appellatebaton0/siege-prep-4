@@ -1,0 +1,52 @@
+[gd_scene load_steps=10 format=3 uid="uid://cx3dra8glk1mp"]
+
+[ext_resource type="Script" uid="uid://dwh0yifrqxhcp" path="res://scripts/actor.gd" id="1_ild8t"]
+[ext_resource type="PackedScene" uid="uid://ctvjgw7gos24a" path="res://scenes/components/cp_spawner.tscn" id="2_qfyig"]
+[ext_resource type="Script" uid="uid://5y4fq21khgxc" path="res://scripts/dynamic_values/dc_length.gd" id="3_entjh"]
+[ext_resource type="Script" uid="uid://c0rn4mlevdrf2" path="res://scripts/dynamic_values/dv_group.gd" id="4_0ny6j"]
+[ext_resource type="Script" uid="uid://ctwtre00simba" path="res://scripts/components/spawner_components/options/osc_random.gd" id="5_u1xdr"]
+[ext_resource type="PackedScene" uid="uid://b12v3ifxeejh3" path="res://scenes/actors/bot.tscn" id="6_6yl12"]
+[ext_resource type="Script" uid="uid://dnog3jll3kr3h" path="res://scripts/components/cp_particle.gd" id="7_2gy1d"]
+[ext_resource type="PackedScene" uid="uid://bxq0gwqjhicjn" path="res://assets/particles/bot_spawning.tscn" id="8_gvdni"]
+[ext_resource type="Script" uid="uid://d28oq4iu2elp8" path="res://scripts/components/cp_holdable.gd" id="9_rw3tm"]
+
+[node name="BotSpawner" type="Node2D"]
+script = ExtResource("1_ild8t")
+metadata/_custom_type_script = "uid://dwh0yifrqxhcp"
+
+[node name="CP_Spawner" parent="." node_paths=PackedStringArray("main") instance=ExtResource("2_qfyig")]
+main = NodePath("")
+spawn_limit = -1
+auto_spawn = true
+spawn_signal_interval = 0.5
+spawn_interval = 1.6
+
+[node name="DynamicLengthCondition" type="Node" parent="CP_Spawner" node_paths=PackedStringArray("input")]
+script = ExtResource("3_entjh")
+input = NodePath("DynamicGroupValue")
+comparison = 1
+comparator = 1
+metadata/_custom_type_script = "uid://5y4fq21khgxc"
+
+[node name="DynamicGroupValue" type="Node" parent="CP_Spawner/DynamicLengthCondition"]
+script = ExtResource("4_0ny6j")
+group_name = "Bot"
+metadata/_custom_type_script = "uid://c0rn4mlevdrf2"
+
+[node name="RandomOptionsSpawnerComponent" type="Node" parent="CP_Spawner"]
+script = ExtResource("5_u1xdr")
+options = Array[PackedScene]([ExtResource("6_6yl12")])
+metadata/_custom_type_script = "uid://ctwtre00simba"
+
+[node name="ParticleComponent" type="Node" parent="."]
+script = ExtResource("7_2gy1d")
+particle = ExtResource("8_gvdni")
+metadata/_custom_type_script = "uid://dnog3jll3kr3h"
+
+[node name="HoldableComponent" type="Node" parent="."]
+script = ExtResource("9_rw3tm")
+grid_locked = true
+grid_offset = Vector2(6, -2)
+metadata/_custom_type_script = "uid://d28oq4iu2elp8"
+
+[connection signal="spawning" from="CP_Spawner" to="ParticleComponent" method="make"]

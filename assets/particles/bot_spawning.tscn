@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://bxq0gwqjhicjn"]
+
+[sub_resource type="Gradient" id="Gradient_v2gqk"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.92941177, 0.88235295, 0.61960787, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3uadt"]
+gradient = SubResource("Gradient_v2gqk")
+width = 1
+height = 1
+
+[sub_resource type="Curve" id="Curve_63o8n"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.19618055, 1), 0.0, 0.0, 0, 0, Vector2(0.92361116, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_6rfk5"]
+curve = SubResource("Curve_63o8n")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bcmv5"]
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 12.0
+emission_ring_inner_radius = 11.5
+emission_ring_cone_angle = 90.0
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -23.690002
+radial_accel_max = -17.230001
+scale_curve = SubResource("CurveTexture_6rfk5")
+
+[node name="BotSpawn" type="GPUParticles2D"]
+emitting = false
+amount = 24
+texture = SubResource("GradientTexture2D_3uadt")
+one_shot = true
+explosiveness = 0.63
+process_material = SubResource("ParticleProcessMaterial_bcmv5")

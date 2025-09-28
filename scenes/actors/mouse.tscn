@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://cekrqcvgpgxeh"]
+
+[ext_resource type="Script" uid="uid://dwh0yifrqxhcp" path="res://scripts/actor.gd" id="1_8m7tw"]
+[ext_resource type="PackedScene" uid="uid://byojuvig761hd" path="res://scenes/components/cp_motion.tscn" id="2_677v4"]
+[ext_resource type="Script" uid="uid://c7m8cx6r12svp" path="res://scripts/components/motion_states/ms_mouse.gd" id="3_wvag2"]
+[ext_resource type="Script" uid="uid://dsvhrcfk13yey" path="res://scripts/components/cp_holder.gd" id="4_s7sx7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_muem4"]
+size = Vector2(1, 1)
+
+[node name="Mouse" type="Node2D"]
+script = ExtResource("1_8m7tw")
+metadata/_custom_type_script = "uid://dwh0yifrqxhcp"
+
+[node name="CP_Motion" parent="." instance=ExtResource("2_677v4")]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CP_Motion"]
+shape = SubResource("RectangleShape2D_muem4")
+
+[node name="MS_Mouse" type="Node" parent="CP_Motion"]
+script = ExtResource("3_wvag2")
+metadata/_custom_type_script = "uid://c7m8cx6r12svp"
+
+[node name="CP_Holder" type="Node" parent="."]
+script = ExtResource("4_s7sx7")
+hold_max_distance = 16.0
+metadata/_custom_type_script = "uid://dsvhrcfk13yey"

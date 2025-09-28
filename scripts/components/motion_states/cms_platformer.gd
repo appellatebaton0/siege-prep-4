@@ -44,8 +44,8 @@ func phys_active(delta:float):
 	
 	if not character.is_on_floor():
 		character.velocity += delta * character.get_gravity() * gravity_multiplier
-	
 	## Jumping
+	
 	
 	# Jump buffering
 	jump_buffer = move_toward(jump_buffer, 0, delta)
