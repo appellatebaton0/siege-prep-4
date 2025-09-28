@@ -21,3 +21,15 @@ res://scripts/components/area_components/acp_control_rotate.gd
 res://scripts/components/motion_states/cms_platformer.gd
 res://scripts/particle_manager.gd
 res://README.md
+res://scripts/dynamic_values/dv_groupone.gd
+res://scripts/dynamic_values/dv_node.gd
+res://scripts/dynamic_values/dv_component.gd
+res://scripts/dynamic_values/node/dv_node.gd
+res://scripts/dynamic_values/nodes/dv_nodes.gd
+res://scripts/dynamic_values/node/dn_group.gd
+res://scripts/dynamic_values/node/dn_node.gd
+res://scripts/dynamic_values/dv_property.gd
+res://scripts/dynamic_values/node/dn_groupone.gd
+res://scripts/dynamic_values/nodes/dN_nodes.gd
+res://scripts/components/area_components/acp_funccaller.gd
+res://scenes/components/area_components/acp_tooltip.tscn

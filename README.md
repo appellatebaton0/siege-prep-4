@@ -15,6 +15,7 @@ And, more building to the framework!
     - DynamicInputValue -> Reads for an input and passes a bool (not a condition in case I need it to return axis strength later)
     - DynamicNodeValue -> Returns a node
         - DynamicComponentValue -> Returns a component from an actor
+        - DynamicGroupSingleValue -> Returns one node from a group
     - DynamicPropertyValue -> Returns a property from a node
     - DynamicNodesValue -> Returns an array of nodes
         - DynamicGroupValue -> Returns the nodes in a group

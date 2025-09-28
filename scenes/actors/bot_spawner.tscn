@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://dwh0yifrqxhcp" path="res://scripts/actor.gd" id="1_ild8t"]
 [ext_resource type="PackedScene" uid="uid://ctvjgw7gos24a" path="res://scenes/components/cp_spawner.tscn" id="2_qfyig"]
-[ext_resource type="Script" uid="uid://5y4fq21khgxc" path="res://scripts/dynamic_values/dc_length.gd" id="3_entjh"]
-[ext_resource type="Script" uid="uid://c0rn4mlevdrf2" path="res://scripts/dynamic_values/dv_group.gd" id="4_0ny6j"]
+[ext_resource type="Script" uid="uid://5y4fq21khgxc" path="res://scripts/dynamic_values/conditions/dc_length.gd" id="3_entjh"]
+[ext_resource type="Script" uid="uid://c0rn4mlevdrf2" path="res://scripts/dynamic_values/nodes/dN_group.gd" id="4_0ny6j"]
 [ext_resource type="Script" uid="uid://ctwtre00simba" path="res://scripts/components/spawner_components/options/osc_random.gd" id="5_u1xdr"]
 [ext_resource type="PackedScene" uid="uid://b12v3ifxeejh3" path="res://scenes/actors/bot.tscn" id="6_6yl12"]
 [ext_resource type="Script" uid="uid://dnog3jll3kr3h" path="res://scripts/components/cp_particle.gd" id="7_2gy1d"]

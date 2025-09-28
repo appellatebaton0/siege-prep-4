@@ -21,7 +21,7 @@ func _ready() -> void:
 
 func get_component(with:Node) -> Component:
 	if component_finder != null and with is Actor:
-		component_finder.node = with
+		component_finder.actor = with
 		return component_finder.value()
 	return null
 

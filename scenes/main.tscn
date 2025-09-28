@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" uid="uid://bo6uaa6310n4q" path="res://scripts/camera.gd" id="1_muem4"]
 [ext_resource type="Script" uid="uid://dwh0yifrqxhcp" path="res://scripts/actor.gd" id="3_pm3ni"]
+[ext_resource type="Script" uid="uid://dxshna2yqd87i" path="res://scripts/dynamic_values/node/dn_singlegroup.gd" id="4_gqmmt"]
 [ext_resource type="PackedScene" uid="uid://b12v3ifxeejh3" path="res://scenes/actors/bot.tscn" id="5_jkv2x"]
 [ext_resource type="PackedScene" uid="uid://ctvjgw7gos24a" path="res://scenes/components/cp_spawner.tscn" id="6_eb6dy"]
 [ext_resource type="PackedScene" uid="uid://d2hotsmf2sgv1" path="res://scenes/actors/turn_around.tscn" id="6_ya4ey"]
-[ext_resource type="Script" uid="uid://5y4fq21khgxc" path="res://scripts/dynamic_values/dc_length.gd" id="7_a8y0u"]
+[ext_resource type="Script" uid="uid://5y4fq21khgxc" path="res://scripts/dynamic_values/conditions/dc_length.gd" id="7_a8y0u"]
 [ext_resource type="PackedScene" uid="uid://cekrqcvgpgxeh" path="res://scenes/actors/mouse.tscn" id="8_eb6dy"]
-[ext_resource type="Script" uid="uid://c0rn4mlevdrf2" path="res://scripts/dynamic_values/dv_group.gd" id="8_jkv2x"]
-[ext_resource type="Script" uid="uid://bcli0gjaiqg0u" path="res://scripts/dynamic_values/dv_node.gd" id="9_choun"]
+[ext_resource type="Script" uid="uid://c0rn4mlevdrf2" path="res://scripts/dynamic_values/nodes/dN_group.gd" id="8_jkv2x"]
 [ext_resource type="Script" uid="uid://ctwtre00simba" path="res://scripts/components/spawner_components/options/osc_random.gd" id="9_jkv2x"]
 [ext_resource type="PackedScene" uid="uid://bmsrqln0m0v3o" path="res://scenes/actors/start_moving.tscn" id="9_trceg"]
 [ext_resource type="PackedScene" uid="uid://coy4f4cdmgqfd" path="res://scenes/actors/stop_moving.tscn" id="10_a8y0u"]
@@ -36,7 +36,7 @@ physics_layer_1/collision_layer = 8
 physics_layer_1/collision_mask = 29
 sources/1 = SubResource("TileSetAtlasSource_muem4")
 
-[node name="Main" type="Node2D"]
+[node name="Main" type="Node2D" groups=["Main"]]
 rotation = 0.00023596727
 
 [node name="Camera" type="Camera2D" parent="."]
@@ -46,17 +46,19 @@ zoom = Vector2(4, 4)
 script = ExtResource("1_muem4")
 
 [node name="NodeDynamicValue" type="Node" parent="Camera"]
-script = ExtResource("9_choun")
-metadata/_custom_type_script = "uid://bcli0gjaiqg0u"
 
 [node name="ParticleManager" type="Node" parent="."]
 script = ExtResource("29_fv21b")
+
+[node name="DN_GroupSingle" type="Node" parent="ParticleManager"]
+script = ExtResource("4_gqmmt")
+group_name = "Main"
 
 [node name="SFXManager" type="Node" parent="."]
 script = ExtResource("29_yq6so")
 
 [node name="BotSpawner" type="Node2D" parent="."]
-position = Vector2(0.9945679, -23.000235)
+position = Vector2(-0.005427301, -22.999998)
 script = ExtResource("3_pm3ni")
 metadata/_custom_type_script = "uid://dwh0yifrqxhcp"
 
@@ -95,35 +97,68 @@ grid_locked = true
 grid_offset = Vector2(6, -2)
 metadata/_custom_type_script = "uid://d28oq4iu2elp8"
 
-[node name="TurnAround" parent="." instance=ExtResource("6_ya4ey")]
-position = Vector2(42.99575, -18.010145)
-
-[node name="TurnAround2" parent="." instance=ExtResource("6_ya4ey")]
-position = Vector2(-39.004482, -18.990797)
-
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 texture_filter = 1
-tile_map_data = PackedByteArray("AAD//wAAAQAAAAAAAAAAAAAAAQAAAAAAAAD8/wAAAQAAAAAAAAD8/wEAAQAAAAAAAAD9/wAAAQAAAAAAAAD9/wEAAQAAAAAAAAD+/wAAAQAAAAAAAAD+/wEAAQAAAAAAAAD//wEAAQAAAAAAAAAAAAEAAQAAAAAAAAABAAAAAQAAAAAAAAABAAEAAQAAAAAAAAACAAAAAQAAAAAAAAACAAEAAQAAAAAAAAADAAAAAQAAAAAAAAADAAEAAQAAAAAAAAAEAAAAAQAAAAAAAAAEAAEAAQAAAAAAAAAFAAAAAQAAAAAAAAAFAAEAAQAAAAAAAAAGAAAAAQAAAAAAAAAGAAEAAQAAAAAAAAD6/wAAAQAAAAAAAAD7/wAAAQAAAAAAAAD6/wEAAQAAAAAAAAD6/wIAAQAAAAAAAAD7/wEAAQAAAAAAAAD7/wIAAQAAAAAAAAD8/wIAAQAAAAAAAAD9/wIAAQAAAAAAAAD+/wIAAQAAAAAAAAD//wIAAQAAAAAAAAAAAAIAAQAAAAAAAAABAAIAAQAAAAAAAAACAAIAAQAAAAAAAAADAAIAAQAAAAAAAAAEAAIAAQAAAAAAAAAFAAIAAQAAAAAAAAAHAAAAAQAAAAAAAAAGAAIAAQAAAAAAAAAHAAEAAQAAAAAAAAAHAAIAAQAAAAAAAAAIAAAAAQAAAAAAAAAJAAAAAQAAAAAAAAAIAAEAAQAAAAAAAAAIAAIAAQAAAAAAAAAJAAEAAQAAAAAAAAAJAAIAAQAAAAAAAAAKAAAAAQAAAAAAAAAKAAEAAQAAAAAAAAAKAAIAAQAAAAAAAAD4/wAAAQAAAAAAAAD4/wEAAQAAAAAAAAD5/wAAAQAAAAAAAAD5/wEAAQAAAAAAAAD4/wIAAQAAAAAAAAD5/wIAAQAAAAAAAAALAAAAAQAAAAAAAAALAAEAAQAAAAAAAAALAAIAAQAAAAAAAAD3//7/AQABAAAAAAD3////AQABAAAAAAD3/wAAAQAAAAAAAAD4//7/AQABAAAAAAD4////AQABAAAAAAD5//7/AQABAAAAAAD5////AQABAAAAAAD6//7/AQABAAAAAAD6////AQABAAAAAAAHAP7/AQABAAAAAAAHAP//AQABAAAAAAAIAP7/AQABAAAAAAAIAP//AQABAAAAAAAJAP7/AQABAAAAAAAJAP//AQABAAAAAAA=")
+tile_map_data = PackedByteArray("AADb//D/AQABAAAAAADb//H/AQABAAAAAADb//L/AQABAAAAAADb//P/AQABAAAAAADb//T/AQABAAAAAADb//X/AQABAAAAAADb//b/AQABAAAAAADb//f/AQABAAAAAADb//j/AQABAAAAAADb//n/AQABAAAAAADb//r/AQABAAAAAADb//v/AQABAAAAAADb//z/AQABAAAAAADb//3/AQABAAAAAADb//7/AQABAAAAAADb////AQABAAAAAADb/wAAAQABAAAAAADb/wEAAQABAAAAAADb/wIAAQABAAAAAADb/wMAAQABAAAAAADb/wQAAQABAAAAAADb/wUAAQABAAAAAADb/wYAAQABAAAAAADb/wcAAQABAAAAAADb/wgAAQABAAAAAADb/wkAAQABAAAAAADb/woAAQABAAAAAADb/wsAAQABAAAAAADb/wwAAQABAAAAAADb/w0AAQABAAAAAADb/w4AAQABAAAAAADc//D/AQABAAAAAADc/w4AAQABAAAAAADd//D/AQABAAAAAADd/w4AAQABAAAAAADe//D/AQABAAAAAADe/w4AAQABAAAAAADf//D/AQABAAAAAADf/w4AAQABAAAAAADg//D/AQABAAAAAADg/w4AAQABAAAAAADh//D/AQABAAAAAADh/w4AAQABAAAAAADi//D/AQABAAAAAADi/w4AAQABAAAAAADj//D/AQABAAAAAADj/w4AAQABAAAAAADk//D/AQABAAAAAADk/w4AAQABAAAAAADl//D/AQABAAAAAADl/w4AAQABAAAAAADm//D/AQABAAAAAADm/w4AAQABAAAAAADn//D/AQABAAAAAADn/w4AAQABAAAAAADo//D/AQABAAAAAADo/w4AAQABAAAAAADp//D/AQABAAAAAADp/w4AAQABAAAAAADq//D/AQABAAAAAADq/w4AAQABAAAAAADr//D/AQABAAAAAADr/w4AAQABAAAAAADs//D/AQABAAAAAADs/w4AAQABAAAAAADt//D/AQABAAAAAADt/w4AAQABAAAAAADu//D/AQABAAAAAADu/w4AAQABAAAAAADv//D/AQABAAAAAADv/w4AAQABAAAAAADw//D/AQABAAAAAADw/w4AAQABAAAAAADx//D/AQABAAAAAADx/w4AAQABAAAAAADy//D/AQABAAAAAADy/w4AAQABAAAAAADz//D/AQABAAAAAADz/w4AAQABAAAAAAD0//D/AQABAAAAAAD0/w4AAQABAAAAAAD1//D/AQABAAAAAAD1/w4AAQABAAAAAAD2//D/AQABAAAAAAD2/w4AAQABAAAAAAD3//D/AQABAAAAAAD3/w4AAQABAAAAAAD4//D/AQABAAAAAAD4/w4AAQABAAAAAAD5//D/AQABAAAAAAD5/w4AAQABAAAAAAD6//D/AQABAAAAAAD6/w4AAQABAAAAAAD7//D/AQABAAAAAAD7/w4AAQABAAAAAAD8//D/AQABAAAAAAD8/w4AAQABAAAAAAD9//D/AQABAAAAAAD9/w4AAQABAAAAAAD+//D/AQABAAAAAAD+/w4AAQABAAAAAAD///D/AQABAAAAAAD//w4AAQABAAAAAAAAAPD/AQABAAAAAAAAAA4AAQABAAAAAAABAPD/AQABAAAAAAABAA4AAQABAAAAAAACAPD/AQABAAAAAAACAA4AAQABAAAAAAADAPD/AQABAAAAAAADAA4AAQABAAAAAAAEAPD/AQABAAAAAAAEAA4AAQABAAAAAAAFAPD/AQABAAAAAAAFAA4AAQABAAAAAAAGAPD/AQABAAAAAAAGAA4AAQABAAAAAAAHAPD/AQABAAAAAAAHAA4AAQABAAAAAAAIAPD/AQABAAAAAAAIAA4AAQABAAAAAAAJAPD/AQABAAAAAAAJAA4AAQABAAAAAAAKAPD/AQABAAAAAAAKAA4AAQABAAAAAAALAPD/AQABAAAAAAALAA4AAQABAAAAAAAMAPD/AQABAAAAAAAMAA4AAQABAAAAAAANAPD/AQABAAAAAAANAA4AAQABAAAAAAAOAPD/AQABAAAAAAAOAA4AAQABAAAAAAAPAPD/AQABAAAAAAAPAA4AAQABAAAAAAAQAPD/AQABAAAAAAAQAA4AAQABAAAAAAARAPD/AQABAAAAAAARAA4AAQABAAAAAAASAPD/AQABAAAAAAASAA4AAQABAAAAAAATAPD/AQABAAAAAAATAA4AAQABAAAAAAAUAPD/AQABAAAAAAAUAA4AAQABAAAAAAAVAPD/AQABAAAAAAAVAA4AAQABAAAAAAAWAPD/AQABAAAAAAAWAA4AAQABAAAAAAAXAPD/AQABAAAAAAAXAA4AAQABAAAAAAAYAPD/AQABAAAAAAAYAA4AAQABAAAAAAAZAPD/AQABAAAAAAAZAA4AAQABAAAAAAAaAPD/AQABAAAAAAAaAA4AAQABAAAAAAAbAPD/AQABAAAAAAAbAA4AAQABAAAAAAAcAPD/AQABAAAAAAAcAA4AAQABAAAAAAAdAPD/AQABAAAAAAAdAA4AAQABAAAAAAAeAPD/AQABAAAAAAAeAA4AAQABAAAAAAAfAPD/AQABAAAAAAAfAA4AAQABAAAAAAAgAPD/AQABAAAAAAAgAA4AAQABAAAAAAAhAPD/AQABAAAAAAAhAA4AAQABAAAAAAAiAPD/AQABAAAAAAAiAA4AAQABAAAAAAAjAPD/AQABAAAAAAAjAA4AAQABAAAAAAAkAPD/AQABAAAAAAAkAA4AAQABAAAAAAAlAPD/AQABAAAAAAAlAA4AAQABAAAAAAAmAPD/AQABAAAAAAAmAPH/AQABAAAAAAAmAPL/AQABAAAAAAAmAPP/AQABAAAAAAAmAPT/AQABAAAAAAAmAPX/AQABAAAAAAAmAPb/AQABAAAAAAAmAPf/AQABAAAAAAAmAPj/AQABAAAAAAAmAPn/AQABAAAAAAAmAPr/AQABAAAAAAAmAPv/AQABAAAAAAAmAPz/AQABAAAAAAAmAP3/AQABAAAAAAAmAP7/AQABAAAAAAAmAP//AQABAAAAAAAmAAAAAQABAAAAAAAmAAEAAQABAAAAAAAmAAIAAQABAAAAAAAmAAMAAQABAAAAAAAmAAQAAQABAAAAAAAmAAUAAQABAAAAAAAmAAYAAQABAAAAAAAmAAcAAQABAAAAAAAmAAgAAQABAAAAAAAmAAkAAQABAAAAAAAmAAoAAQABAAAAAAAmAAsAAQABAAAAAAAmAAwAAQABAAAAAAAmAA0AAQABAAAAAAAmAA4AAQABAAAAAAA=")
 tile_set = SubResource("TileSet_85g3d")
 
 [node name="Mouse" parent="." instance=ExtResource("8_eb6dy")]
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 15
+text = "R to kill the bot, WASD to scroll the camera.
+Click on blocks to move them, use Q/E to rotate them."
+
 [node name="StartMoving" parent="." instance=ExtResource("9_trceg")]
-position = Vector2(-76.01062, -44.982067)
+position = Vector2(-121.98985, -28.971214)
 
 [node name="StartMoving2" parent="." instance=ExtResource("9_trceg")]
-position = Vector2(-131.01085, -45.96909)
+position = Vector2(-109.98985, -28.971214)
+
+[node name="StartMoving3" parent="." instance=ExtResource("9_trceg")]
+position = Vector2(-97.98985, -28.971214)
 
 [node name="StopMoving" parent="." instance=ExtResource("10_a8y0u")]
-position = Vector2(-33.01062, -44.992214)
+position = Vector2(-121.98985, -4.9712143)
 
 [node name="StopMoving2" parent="." instance=ExtResource("10_a8y0u")]
-position = Vector2(-98.01416, -59.976875)
+position = Vector2(-109.98985, -4.9712143)
+
+[node name="StopMoving3" parent="." instance=ExtResource("10_a8y0u")]
+position = Vector2(-97.98985, -4.9712143)
+
+[node name="TurnAround" parent="." instance=ExtResource("6_ya4ey")]
+position = Vector2(-121.98985, 19.028786)
+
+[node name="TurnAround2" parent="." instance=ExtResource("6_ya4ey")]
+position = Vector2(-109.98985, 19.028786)
+
+[node name="TurnAround3" parent="." instance=ExtResource("6_ya4ey")]
+position = Vector2(-97.98985, 19.028786)
 
 [node name="Jump" parent="." instance=ExtResource("11_jkv2x")]
-position = Vector2(-65.016754, -70.984665)
+position = Vector2(-121.98985, 43.028786)
 
 [node name="Jump2" parent="." instance=ExtResource("11_jkv2x")]
-position = Vector2(-15.01699, -71.99646)
+position = Vector2(-109.98985, 43.028786)
+
+[node name="Jump3" parent="." instance=ExtResource("11_jkv2x")]
+position = Vector2(-97.98985, 43.028786)
 
 [connection signal="spawning" from="BotSpawner/CP_Spawner" to="BotSpawner/ParticleComponent" method="make"]

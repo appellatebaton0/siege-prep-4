@@ -30,6 +30,7 @@ enabled=PackedStringArray("res://addons/wakatime/plugin.cfg")
 [global_group]
 
 Bot=""
+Main=""
 
 [input]
 

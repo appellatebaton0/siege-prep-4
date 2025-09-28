@@ -1,6 +1,4 @@
-extends DynamicValue
-class_name DynamicPropertyValue
-
+class_name DynamicPropertyValue extends DynamicValue
 
 ## The node to get a property from. NOTE: will look in children for this automatically.
 @export var input:DynamicNodeValue

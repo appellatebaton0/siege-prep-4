@@ -6,13 +6,20 @@ class_name ParticleManager
 var particles:Array[GPUParticles2D]
 
 func _ready() -> void:
+	# Get the add_to from children
+	if add_to == null:
+		for child in get_children():
+			if child is DynamicNodeValue:
+				add_to = child
+				break
+	
 	Global.new_particle.connect(_on_new_particle)
 
 func _on_new_particle(particle:PackedScene, at:Vector2):
 	var new:GPUParticles2D = particle.instantiate()
 	
-	if main != null:
-		main.value().add_child(new)
+	if add_to != null:
+		add_to.value().add_child(new)
 	else:
 		add_child(new)
 	new.global_position = at

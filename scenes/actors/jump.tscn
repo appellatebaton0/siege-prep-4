@@ -1,18 +1,33 @@
-[gd_scene load_steps=14 format=3 uid="uid://dfryyubqno6tb"]
+[gd_scene load_steps=18 format=3 uid="uid://dfryyubqno6tb"]
 
 [ext_resource type="Script" uid="uid://dwh0yifrqxhcp" path="res://scripts/actor.gd" id="1_x6ai1"]
 [ext_resource type="Texture2D" uid="uid://bollcupqi5ukm" path="res://assets/textures/jump.png" id="2_mman6"]
 [ext_resource type="PackedScene" uid="uid://b7m0l4xy8303h" path="res://scenes/components/cp_area.tscn" id="3_eprin"]
 [ext_resource type="Script" uid="uid://cp7jolp00vhsj" path="res://scripts/components/area_components/acp_dragndrop.gd" id="4_h526r"]
 [ext_resource type="Script" uid="uid://cmu7dbdfx218g" path="res://scripts/components/area_components/acp_funccaller.gd" id="5_ff5ei"]
-[ext_resource type="Script" uid="uid://cjjqx5jo072kl" path="res://scripts/dynamic_values/dv_component.gd" id="6_r5qra"]
+[ext_resource type="Script" uid="uid://cjjqx5jo072kl" path="res://scripts/dynamic_values/node/dn_component.gd" id="6_r5qra"]
 [ext_resource type="Script" uid="uid://58vjd3u66x8p" path="res://scripts/components/area_components/acp_control_rotate.gd" id="7_bcvyj"]
 [ext_resource type="Script" uid="uid://d28oq4iu2elp8" path="res://scripts/components/cp_holdable.gd" id="8_5ssk4"]
+[ext_resource type="PackedScene" uid="uid://c1igqa2livkd3" path="res://scenes/components/area_components/acp_tooltip.tscn" id="8_eprin"]
 [ext_resource type="Texture2D" uid="uid://bd4b6pangx3uh" path="res://assets/textures/guideline.png" id="9_gufhx"]
+[ext_resource type="FontFile" uid="uid://dtlyh74qqm8ko" path="res://assets/fonts/fs-pixel-sans-unicode-regular.regular.ttf" id="9_h526r"]
 [ext_resource type="PackedScene" uid="uid://g1ehoqi5qweg" path="res://scenes/components/cp_static.tscn" id="10_mman6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eb6dy"]
 size = Vector2(12, 24)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h526r"]
+bg_color = Color(0.47520003, 0.66, 0.65076005, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.3372549, 0.48235294, 0.4745098, 1)
+
+[sub_resource type="Theme" id="Theme_ff5ei"]
+Label/font_sizes/font_size = 7
+Label/fonts/font = ExtResource("9_h526r")
+Panel/styles/panel = SubResource("StyleBoxFlat_h526r")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_003ck"]
 size = Vector2(10, 22)
@@ -60,6 +75,43 @@ rotation_amount = 90.0
 requires_held = NodePath("../../CP_Holdable")
 collision_mask = 2
 metadata/_custom_type_script = "uid://58vjd3u66x8p"
+
+[node name="ACP_Tooltip" parent="CP_Area" instance=ExtResource("8_eprin")]
+theme = SubResource("Theme_ff5ei")
+fade_speed = 20.0
+fade_in_delay = 0.1
+collision_mask = 2
+
+[node name="Panel" type="Panel" parent="CP_Area/ACP_Tooltip"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = -6.0
+offset_right = 47.0
+offset_bottom = 18.0
+
+[node name="Label" type="Label" parent="CP_Area/ACP_Tooltip"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = -6.0000005
+offset_right = 370.63638
+offset_bottom = 84.909096
+scale = Vector2(0.11, 0.11)
+theme_override_font_sizes/font_size = 70
+text = "Jump Block"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="CP_Area/ACP_Tooltip"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 1.9999999
+offset_right = 370.63638
+offset_bottom = 137.90909
+scale = Vector2(0.11, 0.11)
+theme_override_font_sizes/font_size = 60
+text = "Makes the bot 
+jump."
+horizontal_alignment = 1
 
 [node name="CP_Holdable" type="Node" parent="." node_paths=PackedStringArray("placement_indicator", "placement_checker")]
 script = ExtResource("8_5ssk4")
