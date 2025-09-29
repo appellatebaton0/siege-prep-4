@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://g1ehoqi5qweg" path="res://scenes/components/cp_static.tscn" id="10_mman6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eb6dy"]
-size = Vector2(12, 24)
+size = Vector2(12.5, 24.5)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h526r"]
 bg_color = Color(0.47520003, 0.66, 0.65076005, 1)

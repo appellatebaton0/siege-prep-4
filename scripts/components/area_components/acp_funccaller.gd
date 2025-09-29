@@ -26,6 +26,7 @@ func get_component(with:Node) -> Component:
 	return null
 
 func call_for(node:Node, repeated:bool):
+	print("called for ", node, repeated)
 	if not actor.is_active():
 		return
 	if node is Component:

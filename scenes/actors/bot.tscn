@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://b12v3ifxeejh3"]
+[gd_scene load_steps=19 format=3 uid="uid://b12v3ifxeejh3"]
 
 [ext_resource type="Script" uid="uid://dwh0yifrqxhcp" path="res://scripts/actor.gd" id="1_7rwdc"]
 [ext_resource type="PackedScene" uid="uid://byojuvig761hd" path="res://scenes/components/cp_motion.tscn" id="3_i1qa5"]
@@ -10,9 +10,6 @@
 [ext_resource type="Script" uid="uid://dx62hdsswpsqh" path="res://scripts/dynamic_values/dv_input.gd" id="7_tqdjd"]
 [ext_resource type="Script" uid="uid://dnog3jll3kr3h" path="res://scripts/components/cp_particle.gd" id="8_51svh"]
 [ext_resource type="PackedScene" uid="uid://cvqj1oy6wp4bj" path="res://assets/particles/bot_made.tscn" id="9_tqdjd"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tipki"]
-size = Vector2(10, 10)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i1qa5"]
 atlas = ExtResource("6_ad8id")
@@ -96,9 +93,8 @@ max_speed = 52.5
 gravity_multiplier = 0.3
 is_moving = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CP_Motion"]
-position = Vector2(0, 1)
-shape = SubResource("RectangleShape2D_tipki")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CP_Motion"]
+polygon = PackedVector2Array(-5, -3, -4, -4, 4, -4, 5, -3, 5, 1, 3, 3, 3, 6, -3, 6, -3, 3, -5, 1)
 
 [node name="CP_AnimatedSprite" parent="." instance=ExtResource("5_51svh")]
 texture_filter = 1
@@ -119,7 +115,7 @@ input_name = "Reset"
 metadata/_custom_type_script = "uid://dx62hdsswpsqh"
 
 [node name="CP_Area" parent="." instance=ExtResource("7_g704q")]
-collision_layer = 4
+collision_layer = 8
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CP_Area"]
